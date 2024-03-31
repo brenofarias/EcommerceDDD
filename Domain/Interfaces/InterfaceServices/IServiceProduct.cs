@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.InterfaceServices
 {
-    public class IServiceProduct
+    public interface IServiceProduct
     {
         // Criado os metodos de adicionar e atualizar pois terá validações especificas
         Task AddProduct(Produto produto);
