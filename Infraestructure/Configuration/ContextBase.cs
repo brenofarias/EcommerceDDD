@@ -28,7 +28,7 @@ namespace Infraestructure.Configuration
 
         private string GetStringConectionConfig()
         {
-            string srtCon = "Data Source=FARIASTEIN\\SQLEXPRESS;Network Library=DBMSSOCN;Initial Catalog=DDD_ECOMERCE;Integrated Security=False;User ID=FARIASTEIN\breno;Password=error404;";
+            string srtCon = "Data Source=FARIASTEIN\\SQLEXPRESS;Network Library=DBMSSOCN;Initial Catalog=DDD_ECOMERCE;Integrated Security=False;User ID=FARIASTEIN\breno;Password=error404";
             return srtCon;
         }
     }
