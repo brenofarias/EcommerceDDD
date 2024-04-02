@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Configuration
 {
-    public class ContextBase : IdentityDbContext
+    public class ContextBase : IdentityDbContext<ApplicationUser>
     {
         public ContextBase(DbContextOptions<ContextBase> options) : base(options) 
         {
