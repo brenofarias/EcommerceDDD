@@ -1,4 +1,5 @@
 ﻿using Entities.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Configuration
 {
-    public class ContextBase : DbContext
+    public class ContextBase : IdentityDbContext
     {
         public ContextBase(DbContextOptions<ContextBase> options) : base(options) 
         {
