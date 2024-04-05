@@ -1,7 +1,8 @@
+using Infraestructure.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Web_ECommerce.Data;
-using Infraestructure.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -28,7 +28,7 @@ namespace Infraestructure.Configuration
 
         private string GetStringConectionConfig()
         {
-            string srtCon = "Integrated Security=SSPI;TrustServerCertificate=True;Persist Security Info=False;User ID=breno;Initial Catalog=DDD_ECOMMERCE;Data Source=FARIASTEIN\\SQLSERVER2022";
+            string srtCon = "Data Source=LAPTOP-OG3JF9JA\\SQLEXPRESS;Initial Catalog=DDD_ECOMMERCE;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             return srtCon;
         }
     }
