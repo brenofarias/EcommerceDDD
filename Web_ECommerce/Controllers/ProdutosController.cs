@@ -108,6 +108,10 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
+                var produtoDeletar = await _InterfaceProductApp.GetEntityById(id);
+
+                await _InterfaceProductApp.Delete(produtoDeletar);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
