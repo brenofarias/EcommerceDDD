@@ -73,12 +73,26 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _InterfaceProductApp.UpdateProduct(produto);
+
+                // Verifica se teve algum erro
+                if (produto.Notifications.Any())
+                {
+                    // ForEach para pegar todos os erros do produto
+                    foreach (var item in produto.Notifications)
+                    {
+                        ModelState.AddModelError(item.NomePropriedade, item.Mensagem);
+                    }
+
+                    return View("Edit", produto);
+                }
             }
             catch
             {
-                return View();
+                return View("Edit", produto);
             }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ProdutosController/Delete/5
