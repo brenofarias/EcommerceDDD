@@ -9,6 +9,7 @@ using Infraestructure.Repository.Generics;
 using Infraestructure.Repository.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using Web_ECommerce.Data;
 
 
