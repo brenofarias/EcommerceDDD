@@ -3,6 +3,7 @@ using ApplicationApp.OpenApp;
 using Domain.Interfaces.Generics;
 using Domain.Interfaces.InterfaceProduct;
 using Domain.Interfaces.InterfaceServices;
+using Domain.Services;
 using Infraestructure.Configuration;
 using Infraestructure.Repository.Generics;
 using Infraestructure.Repository.Repositories;
@@ -23,15 +24,16 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ContextBase>();
 builder.Services.AddControllersWithViews();
 
-// Interface e Repositorio
+// INTERFACE E REPOSITORIO
 builder.Services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
 builder.Services.AddSingleton<IProduct, RepositoryProduct>();
 
-// Interface Aplicação
+// INTERFACE APLICAÇÃO
 builder.Services.AddSingleton<InterfaceProductApp, AppProduct>();
 
-// Interface Serviço
-builder.Services.AddSingleton<IServiceProduct, IServiceProduct>();
+// SERVIÇO DOMINIO
+builder.Services.AddSingleton<IServiceProduct, ServiceProduct>();
+
 
 var app = builder.Build();
 
