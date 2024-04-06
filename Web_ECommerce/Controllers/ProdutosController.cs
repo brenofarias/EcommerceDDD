@@ -1,4 +1,5 @@
-﻿using Entities.Entities;
+﻿using ApplicationApp.Interface;
+using Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,22 @@ namespace Web_ECommerce.Controllers
 {
     public class ProdutosController : Controller
     {
+        public readonly InterfaceProductApp _InterfaceProductApp;
+        public ProdutosController(InterfaceProductApp interfaceProductApp) 
+        { 
+            _InterfaceProductApp = interfaceProductApp;
+        }
+
         // GET: ProdutosController
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _InterfaceProductApp.List());
         }
 
         // GET: ProdutosController/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            return View();
+            return View(await _InterfaceProductApp.GetEntityById(id));
         }
 
         // GET: ProdutosController/Create
@@ -31,18 +38,32 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _InterfaceProductApp.AddProduct(produto);
+
+                // Verifica se teve algum erro
+                if (produto.Notifications.Any())
+                {
+                    // ForEach para pegar todos os erros do produto
+                    foreach (var item in produto.Notifications)
+                    {
+                        ModelState.AddModelError(item.NomePropriedade, item.Mensagem);
+                    }
+
+                    return View("Edit", produto);
+                }
             }
             catch
             {
-                return View();
+                return View("Edit", produto);
             }
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ProdutosController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            return View(await _InterfaceProductApp.GetEntityById(id));
         }
 
         // POST: ProdutosController/Edit/5
@@ -63,7 +84,7 @@ namespace Web_ECommerce.Controllers
         // GET: ProdutosController/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            return View(await _InterfaceProductApp.GetEntityById(id));
         }
 
         // POST: ProdutosController/Delete/5
