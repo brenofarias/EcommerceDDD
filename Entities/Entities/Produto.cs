@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Entities
 {
-    [Table("Product")]
+    [Table("TB_PRODUTO")]
     public class Produto : Notifies
     {
-        [Column("PRD_ID")]
+        [Column("PRD_ID", Order = 0)]
         [Display(Name = "Código")]
         public string Id { get; set; }
 

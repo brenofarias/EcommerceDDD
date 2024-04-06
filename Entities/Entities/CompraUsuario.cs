@@ -13,7 +13,7 @@ namespace Entities.Entities
     [Table("TB_COMPRA_USUARIO")]
     public class CompraUsuario : Notifies
     {
-        [Column("CUS_ID")]
+        [Column("CUS_ID", Order = 0)]
         [Display(Name = "Código")]
         public int Id { get; set; }
 
@@ -33,7 +33,7 @@ namespace Entities.Entities
 
         [Display(Name = "Usuário")]
         [ForeignKey("ApplicationUser")]
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         public string UserID { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
