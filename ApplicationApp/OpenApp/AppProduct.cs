@@ -11,7 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ApplicationApp.OpenApp
 {
-    public class AppProduct : InterfaceGenericApp<Produto>
+    public class AppProduct : InterfaceProductApp
     {
         IProduct _IProduct;
         IServiceProduct _IServiceProduct;

@@ -31,7 +31,7 @@ namespace Infraestructure.Configuration
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<IdentityUser>().ToTable("AspNetUsers").HasKey(t => t.Id)
+            builder.Entity<IdentityUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
             
             base.OnModelCreating(builder);
         }

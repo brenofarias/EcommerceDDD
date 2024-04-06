@@ -1,4 +1,11 @@
+using ApplicationApp.Interface;
+using ApplicationApp.OpenApp;
+using Domain.Interfaces.Generics;
+using Domain.Interfaces.InterfaceProduct;
+using Domain.Interfaces.InterfaceServices;
 using Infraestructure.Configuration;
+using Infraestructure.Repository.Generics;
+using Infraestructure.Repository.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Web_ECommerce.Data;
@@ -15,6 +22,16 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ContextBase>();
 builder.Services.AddControllersWithViews();
+
+// Interface e Repositorio
+builder.Services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
+builder.Services.AddSingleton<IProduct, RepositoryProduct>();
+
+// Interface Aplicação
+builder.Services.AddSingleton<InterfaceProductApp, AppProduct>();
+
+// Interface Serviço
+builder.Services.AddSingleton<IServiceProduct, IServiceProduct>();
 
 var app = builder.Build();
 
