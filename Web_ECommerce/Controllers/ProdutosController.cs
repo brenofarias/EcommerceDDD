@@ -1,10 +1,12 @@
 ﻿using ApplicationApp.Interface;
 using Entities.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web_ECommerce.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         public readonly InterfaceProductApp _InterfaceProductApp;
