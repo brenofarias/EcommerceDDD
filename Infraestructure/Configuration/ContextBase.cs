@@ -38,7 +38,7 @@ namespace Infraestructure.Configuration
 
         private string GetStringConectionConfig()
         {
-            string srtCon = "Data Source=LAPTOP-OG3JF9JA\\SQLEXPRESS;Initial Catalog=DDD_ECOMMERCE;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            string srtCon = "Data Source=FARIASTEIN\\SQLSERVER2022;Initial Catalog=DDD_ECOMMERCE;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
             return srtCon;
         }
     }
