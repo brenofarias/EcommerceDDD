@@ -22,7 +22,9 @@ namespace Web_ECommerce.Controllers
         // GET: ProdutosController
         public async Task<IActionResult> Index()
         {
-            return View(await _InterfaceProductApp.List());
+            var idUsuario = await RetornarIdUsuarioLogado();
+
+            return View(await _InterfaceProductApp.ListarProdutosUsuario(idUsuario));
         }
 
         // GET: ProdutosController/Details/5

@@ -11,5 +11,6 @@ namespace Domain.Interfaces.InterfaceProduct
     // Ele herda os metódos de Generic passando a entidade Produto
     public interface IProduct : IGeneric<Produto>
     {
+        Task<List<Produto>> ListarProdutosUsuario(string userID);
     }
 }
