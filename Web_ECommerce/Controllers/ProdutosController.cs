@@ -62,12 +62,12 @@ namespace Web_ECommerce.Controllers
                         ModelState.AddModelError(item.NomePropriedade, item.Mensagem);
                     }
 
-                    return View("Edit", produto);
+                    return View("Create", produto);
                 }
             }
             catch
             {
-                return View("Edit", produto);
+                return View("Create", produto);
             }
 
             return RedirectToAction(nameof(Index));
