@@ -2,6 +2,7 @@
 using Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web_ECommerce.Controllers
@@ -9,10 +10,13 @@ namespace Web_ECommerce.Controllers
     [Authorize]
     public class ProdutosController : Controller
     {
+        public readonly UserManager<ApplicationUser> _userManager;
+
         public readonly InterfaceProductApp _InterfaceProductApp;
-        public ProdutosController(InterfaceProductApp interfaceProductApp) 
+        public ProdutosController(InterfaceProductApp interfaceProductApp, UserManager<ApplicationUser> userManager) 
         { 
             _InterfaceProductApp = interfaceProductApp;
+            _userManager = userManager;
         }
 
         // GET: ProdutosController
@@ -40,6 +44,11 @@ namespace Web_ECommerce.Controllers
         {
             try
             {
+                // Informando o usuário que criou o produto
+                var idUsuario = await RetornarIdUsuarioLogado();
+
+                produto.UserId = idUsuario;
+
                 await _InterfaceProductApp.AddProduct(produto);
 
                 // Verifica se teve algum erro
@@ -120,6 +129,13 @@ namespace Web_ECommerce.Controllers
             {
                 return View();
             }
+        }
+
+        private async Task<string> RetornarIdUsuarioLogado()
+        {
+            var idUsuario = await _userManager.GetUserAsync(User);
+
+            return idUsuario.Id;
         }
     }
 }
