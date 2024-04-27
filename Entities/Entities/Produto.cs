@@ -14,7 +14,7 @@ namespace Entities.Entities
     {
         [Column("PRD_ID", Order = 0)]
         [Display(Name = "Código")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Column("PRD_NOME")]
         [MaxLength(255)]

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,22 @@ namespace Infraestructure.Configuration
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
-            
+
+            // Validação para evitar o erro de chave estrangeira
+            if (builder == null)
+                throw new ArgumentNullException("modelBuilder");
+
+            // for the other conventions, we do a metadata model loop
+            foreach (var entityType in builder.Model.GetEntityTypes())
+            {
+                // equivalent of modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+                entityType.GetForeignKeys()
+                    .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade)
+                    .ToList()
+                    .ForEach(fk => fk.DeleteBehavior = DeleteBehavior.Restrict);
+            }
+
+
             base.OnModelCreating(builder);
         }
 
