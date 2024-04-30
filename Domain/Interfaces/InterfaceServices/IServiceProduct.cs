@@ -13,6 +13,6 @@ namespace Domain.Interfaces.InterfaceServices
         // Criado os metodos de adicionar e atualizar pois terá validações especificas
         Task AddProduct(Produto produto);
         Task UpdateProduct(Produto produto);
-        Task<List<Produto>> ListarProdutosComEstoque(Expression<Func<Produto, bool>> exProduto);
+        Task<List<Produto>> ListarProdutosComEstoque();
     }
 }
