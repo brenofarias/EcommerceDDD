@@ -139,5 +139,12 @@ namespace Web_ECommerce.Controllers
 
             return idUsuario.Id;
         }
+
+        [AllowAnonymous] // Permite acessar o endpoint mesmo se estiver deslogado
+        [HttpGet("/api/ListarProdutosComEstoque")]
+        public async Task<JsonResult> ListarProdutosComEstoque()
+        {
+            return Json(await _InterfaceProductApp.ListarProdutosComEstoque());
+        }
     }
 }

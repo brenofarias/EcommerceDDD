@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,5 +13,6 @@ namespace Domain.Interfaces.InterfaceServices
         // Criado os metodos de adicionar e atualizar pois terá validações especificas
         Task AddProduct(Produto produto);
         Task UpdateProduct(Produto produto);
+        Task<List<Produto>> ListarProdutosComEstoque(Expression<Func<Produto, bool>> exProduto);
     }
 }
