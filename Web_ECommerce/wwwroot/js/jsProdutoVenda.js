@@ -4,7 +4,7 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
 
     var nome = $("#nome_" + idProduto).val();
     var qtd = $("#qtd_" + idProduto).val();
-
+    console.log("TESTE " + qtd);
     $.ajax({
         type: 'POST',
         url: "/api/AdicionarProdutoCarrinho",
@@ -12,13 +12,11 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
         cache: false,
         async: true,
         data: {
-            "id": idProduto,
-            "nome": nome,
-            "qtd": qtd
+            "id": idProduto, "nome": nome, "qtd": qtd
         },
         success: function (data) {
 
-            if (data.successo) {
+            if (data) {
                 alert("OK");
             } else {
                 alert("Usuário não logado");
@@ -38,24 +36,27 @@ ObjetoVenda.CarregaProdutos = function () {
 
             var htmlConteudo = "";
 
-            data.forEach(function (entitie) {
+            data.forEach(function (Entitie) {
 
                 htmlConteudo += " <div class='col-xs-12 col-sm-4 col-md-4 col-lg-4'>";
 
-                var idNome = "nome_" + entitie.id;
-                var idQtd = "qtd_" + entitie.id;
+                var idNome = "nome_" + Entitie.id;
+                var idQtd = "qtd_" + Entitie.id;
 
-                htmlConteudo += "<label id='" + idNome + "'> Produto: " + entitie.nome + "</label></br>";
-                htmlConteudo += "<label> Valor: " + entitie.valor + "</label></br>";
+                htmlConteudo += "<label id='" + idNome + "'> Produto: " + Entitie.nome + "</label></br>";
+                htmlConteudo += "<label> Valor: " + Entitie.valor + "</label></br>";
 
-                htmlConteudo += "Quantidade : <input type='number' value='1' id=" + idQtd + "'>";
+                htmlConteudo += "Quantidade : <input type='number' value='1' id='" + idQtd + "'>";
 
-                htmlConteudo += "<input type='button' onClick='ObjetoVenda.AdicionarCarrinho(" + entitie.id + ")' value='Comprar'></br>";
+                htmlConteudo += "<input type='button' onClick='ObjetoVenda.AdicionarCarrinho(" + Entitie.id + ")' value='Comprar'></br>";
 
                 htmlConteudo += "</div>";
+                
             });
 
             $("#DivVenda").html(htmlConteudo);
+
+
         }
     });
 }
