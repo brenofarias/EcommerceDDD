@@ -203,7 +203,7 @@ namespace Infraestructure.Migrations
                     UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProdutoId = table.Column<int>(type: "int", nullable: false),
                     CUS_ESTADO = table.Column<int>(type: "int", nullable: false),
-                    CSU_QTD = table.Column<int>(type: "int", nullable: false)
+                    CUS_QTD = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,8 +215,8 @@ namespace Infraestructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TB_COMPRA_USUARIO_TB_PRODUTO_ProdutoId",
-                        column: x => x.ProdutoId,
+                        name: "FK_TB_COMPRA_USUARIO_TB_PRODUTO_IdProduto",
+                        column: x => x.IdProduto,
                         principalTable: "TB_PRODUTO",
                         principalColumn: "PRD_ID",
                         onDelete: ReferentialAction.Restrict);
@@ -262,9 +262,9 @@ namespace Infraestructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_COMPRA_USUARIO_ProdutoId",
+                name: "IX_TB_COMPRA_USUARIO_IdProduto",
                 table: "TB_COMPRA_USUARIO",
-                column: "ProdutoId");
+                column: "IdProduto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TB_COMPRA_USUARIO_UserID",

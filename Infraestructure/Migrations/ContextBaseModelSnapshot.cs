@@ -152,12 +152,12 @@ namespace Infraestructure.Migrations
                         .HasColumnType("int")
                         .HasColumnOrder(1);
 
-                    b.Property<int>("ProdutoId")
+                    b.Property<int>("IdProduto")
                         .HasColumnType("int");
 
                     b.Property<int>("QtdCompra")
                         .HasColumnType("int")
-                        .HasColumnName("CSU_QTD");
+                        .HasColumnName("CUS_QTD");
 
                     b.Property<string>("UserID")
                         .IsRequired()
@@ -166,7 +166,7 @@ namespace Infraestructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("IdProduto");
 
                     b.HasIndex("UserID");
 
@@ -374,7 +374,7 @@ namespace Infraestructure.Migrations
                 {
                     b.HasOne("Entities.Entities.Produto", "Produto")
                         .WithMany()
-                        .HasForeignKey("ProdutoId")
+                        .HasForeignKey("IdProduto")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

@@ -1,6 +1,7 @@
 using ApplicationApp.Interface;
 using ApplicationApp.OpenApp;
 using Domain.Interfaces.Generics;
+using Domain.Interfaces.InterfaceCompraUsuario;
 using Domain.Interfaces.InterfaceProduct;
 using Domain.Interfaces.InterfaceServices;
 using Domain.Services;
@@ -29,9 +30,11 @@ builder.Services.AddControllersWithViews();
 // INTERFACE E REPOSITORIO
 builder.Services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
 builder.Services.AddSingleton<IProduct, RepositoryProduct>();
+builder.Services.AddSingleton<ICompraUsuario, RepositoryCompraUsuario>();
 
 // INTERFACE APLICAÇÃO
 builder.Services.AddSingleton<InterfaceProductApp, AppProduct>();
+builder.Services.AddSingleton<InterfaceCompraUsuarioApp, AppCompraUsuario>();
 
 // SERVIÇO DOMINIO
 builder.Services.AddSingleton<IServiceProduct, ServiceProduct>();

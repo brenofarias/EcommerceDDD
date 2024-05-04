@@ -6,7 +6,7 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
     var qtd = $("#qtd_" + idProduto).val();
 
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: "/api/AdicionarProdutoCarrinho",
         dataType: "JSON",
         cache: false,
@@ -18,6 +18,11 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
         },
         success: function (data) {
 
+            if (data.successo) {
+                alert("OK");
+            } else {
+                alert("Usuário não logado");
+            }
         }
     });
 }

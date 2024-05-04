@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ContextBase))]
-    [Migration("20240427154247_InitialMigration")]
+    [Migration("20240504142535_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -160,7 +160,7 @@ namespace Infraestructure.Migrations
 
                     b.Property<int>("QtdCompra")
                         .HasColumnType("int")
-                        .HasColumnName("CSU_QTD");
+                        .HasColumnName("CUS_QTD");
 
                     b.Property<string>("UserID")
                         .IsRequired()
