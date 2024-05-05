@@ -4,7 +4,7 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
 
     var nome = $("#nome_" + idProduto).val();
     var qtd = $("#qtd_" + idProduto).val();
-    console.log("TESTE " + qtd);
+    
     $.ajax({
         type: 'POST',
         url: "/api/AdicionarProdutoCarrinho",
@@ -16,10 +16,10 @@ ObjetoVenda.AdicionarCarrinho = function (idProduto) {
         },
         success: function (data) {
 
-            if (data) {
-                alert("OK");
+            if (data.sucesso) {
+                ObjetoAlerta.AlertaTela(1, "Produto adicionado no carrinho");
             } else {
-                alert("Usuário não logado");
+                ObjetoAlerta.AlertaTela(2, "Necessário efetuar o login");
             }
         }
     });
@@ -61,6 +61,13 @@ ObjetoVenda.CarregaProdutos = function () {
     });
 }
 
+ObjetoVenda.CarregaQtdCarrinho = function () {
+    $("#qtdCarrinho").text("(0)");
+
+    setTimeout(ObjetoVenda.CarregaQtdCarrinho, 10000);
+}
+
 $(function () {
     ObjetoVenda.CarregaProdutos();
+    ObjetoVenda.CarregaQtdCarrinho();
 });

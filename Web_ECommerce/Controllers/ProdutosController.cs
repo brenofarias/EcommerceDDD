@@ -97,6 +97,9 @@ namespace Web_ECommerce.Controllers
                         ModelState.AddModelError(item.NomePropriedade, item.Mensagem);
                     }
 
+                    ViewBag.Alerta = true;
+                    ViewBag.Mensagem = "Verifique, ocorreu algum erro!";
+
                     return View("Edit", produto);
                 }
             }
