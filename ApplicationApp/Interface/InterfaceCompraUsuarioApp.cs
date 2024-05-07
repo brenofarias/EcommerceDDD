@@ -9,5 +9,6 @@ namespace ApplicationApp.Interface
 {
     public interface InterfaceCompraUsuarioApp : InterfaceGenericApp<CompraUsuario>
     {
+        public Task<int> QuantidadeProdutoCarrinhoUsuario(string userId);
     }
 }

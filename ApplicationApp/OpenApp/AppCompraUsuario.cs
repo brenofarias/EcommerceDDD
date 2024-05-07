@@ -18,6 +18,11 @@ namespace ApplicationApp.OpenApp
             _IComprausuario = ICompraUsuario;
         }
 
+        public async Task<int> QuantidadeProdutoCarrinhoUsuario(string userId)
+        {
+            return await _IComprausuario.QuantidadeProdutoCarrinhoUsuario(userId);
+        }
+
         public async Task Add(CompraUsuario Objeto)
         {
             await _IComprausuario.Add(Objeto);
