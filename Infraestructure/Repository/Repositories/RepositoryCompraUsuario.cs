@@ -1,5 +1,6 @@
 ﻿using Domain.Interfaces.InterfaceCompraUsuario;
 using Entities.Entities;
+using Entities.Entities.Enums;
 using Infraestructure.Configuration;
 using Infraestructure.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace Infraestructure.Repository.Repositories
             using (var banco = new ContextBase(_optionsbuilder))
             {
                 // Retorna a quantidade de produtos que o usuário tem no carrinho
-                return await banco.CompraUsuario.CountAsync(c => c.UserID.Equals(userId));
+                return await banco.CompraUsuario.CountAsync(c => c.UserID.Equals(userId) && c.Estado == EnumEstadoCompra.Produto_Carrinho);
             }
         }
     }
