@@ -118,7 +118,7 @@ namespace Web_ECommerce.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     Celular = Input.Celular,
-                    // CEP = Input.CEP,
+                    CEP = Input.CEP,
                     CPF = Input.CPF,
                     Telefone = Input.Telefone,
                     Endereco = Input.Endereco,

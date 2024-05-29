@@ -29,7 +29,7 @@ namespace Entities.Entities
         [Column("USR_CEP")]
         [MaxLength(15)]
         [Display(Name = "CEP")]
-        public string? Cep { get; set; }
+        public string? CEP { get; set; }
 
         [Column("USR_ENDERECO")]
         [MaxLength(255)]
