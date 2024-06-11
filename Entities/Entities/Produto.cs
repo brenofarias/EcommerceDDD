@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Entities.Entities
 {
@@ -61,6 +62,13 @@ namespace Entities.Entities
         public int IdProdutoCarrinho { get; set; }
 
         [NotMapped]
-        public int QtdCompra { get; set; }  
+        public int QtdCompra { get; set; }
+
+        [NotMapped]
+        public IFormFile Imagem { get; set; }
+
+        [Column("PRD_URL")]
+        public string? Url { get; set; }
+
     }
 }
