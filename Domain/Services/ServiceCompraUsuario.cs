@@ -29,5 +29,4 @@ namespace Domain.Services
             return await _ICompraUsuario.ProdutosCompradosPorEstado(userId, EnumEstadoCompra.Produto_Comprado);
         }
     }
-    }
 }
